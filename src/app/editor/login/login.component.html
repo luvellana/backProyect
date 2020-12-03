@@ -1,0 +1,49 @@
+<div class="container">
+  <img
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/La_Paz_Bus_logo.svg/1019px-La_Paz_Bus_logo.svg.png"
+    height="150px"
+    width="150px"
+  />
+  <div class="login-container">
+    <div class="register">
+      <h2>Inicio Sesión</h2>
+      <form action="" #form="ngForm">
+
+
+        <input matInput
+               type="text"
+               name="email"
+               ngModel
+               #emailUI="ngModel"
+               required
+               placeholder="Email" 
+               class="usuario" />
+        <div *ngIf="emailUI.invalid && (emailUI.touched || emailUI.dirty)"
+             class="alert alert-danger">
+        <div *ngIf="emailUI.errors.required" style="color: red;">
+          Email requerido
+          </div>
+        </div>
+
+        <input type="password" 
+              placeholder="Contraseña" 
+              class="pass"
+              matInput
+              name="password"
+              ngModel
+              #passwordUI="ngModel"
+              required />
+
+        <div *ngIf="passwordUI.invalid && (passwordUI.touched || passwordUI.dirty)"
+             class="alert alert-danger">
+          <div *ngIf="passwordUI.errors.required" style="color: red;">
+            Contraseña requerida
+          </div>
+        </div>
+
+        
+      </form>
+      <button type="submit" class="submit" value="Ingresar"  [disabled]="form.invalid" (click)="onLogin(form)"> Iniciar Sesion</button>
+    </div>
+  </div>
+</div>
